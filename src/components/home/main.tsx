@@ -1,4 +1,3 @@
-import { Shirt } from "lucide-react";
 import Link from "next/link";
 import { GiLargeDress } from "react-icons/gi";
 import { IoShirtSharp } from "react-icons/io5";
@@ -14,7 +13,7 @@ const Main = () => {
           <AvatarFallback>RO</AvatarFallback>
         </Avatar>
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center">
-          Showcase Riiz O'Brien
+          Showcase Riiz O&apos;Brien
         </h1>
       </div>
       <div className="flex justify-center flex-wrap gap-8 items-center">

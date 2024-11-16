@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
 import { generateToken } from "@/lib/generateToken";
 
 export const GET = () => {
