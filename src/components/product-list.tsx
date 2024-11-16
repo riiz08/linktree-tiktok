@@ -20,6 +20,15 @@ const ProductList = () => {
         shopee="https://s.shopee.co.id/40PLdooTs8"
         tiktok="https://vt.tokopedia.com/t/ZSjPXL1f7"
       />
+
+      <CardProduct
+        name="Fordive Shelby"
+        description="parfum dengan aroma segar yang memadukan keharuman citrus, musk lembut, dan sentuhan amber, menciptakan kesan maskulin yang modern dan penuh energi."
+        image="/fordive-shelby.jpg"
+        amount={270000}
+        shopee="https://s.shopee.co.id/9pN9Y3u1TD"
+        tiktok="https://vt.tokopedia.com/t/ZSj52kdGd"
+      />
     </div>
   );
 };
