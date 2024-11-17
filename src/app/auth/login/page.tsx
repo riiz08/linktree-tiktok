@@ -8,7 +8,7 @@ const Page = () => {
         <CardHeader>
           <CardTitle className="text-center">Login</CardTitle>
         </CardHeader>
-        <CardContent className="px-4 py-2">
+        <CardContent className="px-4 py-4">
           <LoginForm />
         </CardContent>
       </Card>

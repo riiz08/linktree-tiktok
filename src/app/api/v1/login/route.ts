@@ -9,11 +9,11 @@ export const GET = () => {
 
 export const POST = async (req: Request) => {
   const prisma = new PrismaClient();
-  const { nickname, password } = await req.json();
+  const { username, password } = await req.json();
 
-  if (nickname === "") {
+  if (username === "") {
     return NextResponse.json(
-      { message: "Nickname tidak boleh kosong" },
+      { message: "Username tidak boleh kosong" },
       { status: 400 }
     );
   } else if (password === "") {
@@ -23,26 +23,26 @@ export const POST = async (req: Request) => {
     );
   }
 
-  const existingNickname = await prisma.admin.findFirst({
+  const existingUsername = await prisma.admin.findFirst({
     where: {
-      nickname,
+      username,
     },
   });
 
-  if (!existingNickname) {
-    return NextResponse.json({ message: "Nickname tidak ditemukan" });
+  if (!existingUsername) {
+    return NextResponse.json({ message: "Username tidak ditemukan" });
   }
 
   const comparePassword = await bcrypt.compare(
     password,
-    existingNickname.password
+    existingUsername.password
   );
 
   if (!comparePassword) {
     return NextResponse.json({ message: "Something wrong" }, { status: 401 });
   }
 
-  const token = generateToken(nickname);
+  const token = generateToken(username);
 
   const response = NextResponse.json({ token });
 

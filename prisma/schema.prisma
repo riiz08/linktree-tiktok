@@ -15,8 +15,8 @@ datasource db {
 
 model Admin {
   id            String @id @default(uuid())
+  username      String
   name          String
-  nickname      String
   profile_image String
   password      String
 }
