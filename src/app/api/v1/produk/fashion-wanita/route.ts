@@ -6,7 +6,7 @@ export const GET = async (req: NextRequest) => {
   const query = searchParam.get("id");
 
   if (query) {
-    const product = await prisma.parfum.findUnique({
+    const product = await prisma.fashionWanita.findUnique({
       where: {
         id: Number(query),
       },
@@ -35,7 +35,7 @@ export const GET = async (req: NextRequest) => {
     }
   }
 
-  const products = await prisma.parfum.findMany({
+  const products = await prisma.fashionWanita.findMany({
     select: {
       name: true,
       image: true,
@@ -65,7 +65,7 @@ export const GET = async (req: NextRequest) => {
 export const POST = async (req: Request) => {
   const { name, image, description, shopee, price } = await req.json();
 
-  const existingProduct = await prisma.parfum.findFirst({
+  const existingProduct = await prisma.fashionWanita.findFirst({
     where: {
       name,
     },
@@ -78,7 +78,7 @@ export const POST = async (req: Request) => {
     );
   }
 
-  const newProduct = await prisma.parfum.create({
+  const newProduct = await prisma.fashionWanita.create({
     data: {
       name,
       image,
@@ -108,7 +108,7 @@ export const PUT = async (req: Request) => {
   const { name, image, description, shopee, price, productId } =
     await req.json();
 
-  const productUpdated = await prisma.parfum.update({
+  const productUpdated = await prisma.fashionWanita.update({
     where: {
       id: productId,
     },
@@ -143,7 +143,7 @@ export const PUT = async (req: Request) => {
 export const DELETE = async (req: Request) => {
   const { productId } = await req.json();
 
-  const deleteProduct = await prisma.parfum.delete({
+  const deleteProduct = await prisma.fashionWanita.delete({
     where: {
       id: productId,
     },
