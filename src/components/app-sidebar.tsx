@@ -23,7 +23,7 @@ const items = [
   },
   {
     title: "Fashion pria",
-    url: "/admin/dashboard/fashion-wanita",
+    url: "/admin/dashboard/fashion-pria",
     icon: PiTShirt,
   },
   {

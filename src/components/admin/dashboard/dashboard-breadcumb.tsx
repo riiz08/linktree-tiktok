@@ -5,31 +5,50 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const DashboardBreadcumb = () => {
-  const [isClient, setIsClient] = useState(false);
-  //   const [page, setPage] = useState("dashboard");
+const DashboardBreadcrumb = () => {
+  const pathname = usePathname();
+  const [currentPath, setCurrentPath] = useState<string>("");
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    setCurrentPath(pathname); // Memastikan state diperbarui setiap kali `pathname` berubah
+  }, [pathname]);
 
-  if (isClient) {
-    return (
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/admin/dashboard">Dashboard</BreadcrumbLink>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-    );
-  } else {
+  // Konfigurasi breadcrumb berdasarkan pathname
+  const breadcrumbConfig: Record<string, string> = {
+    "/admin/dashboard": "Dashboard",
+    "/admin/dashboard/fashion-wanita": "Fashion Wanita",
+    "/admin/dashboard/fashion-pria": "Fashion Pria",
+    "/admin/dashboard/parfum": "Parfum",
+  };
+
+  // Dapatkan nama halaman saat ini dari config
+  const currentPage = breadcrumbConfig[currentPath];
+
+  if (!currentPage) {
     return <Skeleton className="w-[70px] h-[20px]" />;
   }
+
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/admin/dashboard">Dashboard</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        {currentPath !== "/admin/dashboard" && (
+          <BreadcrumbItem>
+            <BreadcrumbLink href={currentPath}>{currentPage}</BreadcrumbLink>
+          </BreadcrumbItem>
+        )}
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
 };
 
-export default DashboardBreadcumb;
+export default DashboardBreadcrumb;

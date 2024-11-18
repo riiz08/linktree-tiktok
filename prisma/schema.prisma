@@ -13,6 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Parfum {
+  id          Int @unique @id @default(autoincrement())
+  name        String @unique
+  image       String
+  description String
+  shopee      String
+  price       BigInt
+}
+
+model FashionPria {
+  id          Int @unique @id @default(autoincrement())
+  name        String @unique
+  image       String
+  description String
+  shopee      String
+  price       BigInt
+}
+
+model FashionWanita {
+  id          Int @unique @id @default(autoincrement())
+  name        String @unique
+  image       String
+  description String
+  shopee      String
+  price       BigInt
+}
+
 model Admin {
   id            String @id @default(uuid())
   username      String
@@ -20,3 +47,5 @@ model Admin {
   profile_image String
   password      String
 }
+
+

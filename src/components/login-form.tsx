@@ -86,6 +86,7 @@ const LoginForm = () => {
                     <Input
                       type="text"
                       placeholder="Enter your username"
+                      className="bg-slate-950/10 backdrop-blur-sm"
                       {...field}
                     />
                   </FormControl>
@@ -101,7 +102,11 @@ const LoginForm = () => {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" {...field} />
+                    <Input
+                      type="password"
+                      {...field}
+                      className="bg-slate-950/10 backdrop-blur-sm"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

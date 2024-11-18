@@ -13,6 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BsPerson } from "react-icons/bs";
 import { GoSignOut } from "react-icons/go";
+import LogoutDialog from "@/components/logout-dialog";
 
 const ProfileDropdown = () => {
   return (
@@ -43,8 +44,8 @@ const ProfileDropdown = () => {
           <BsPerson />
           Profile
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <GoSignOut /> Logout
+        <DropdownMenuItem asChild>
+          <LogoutDialog />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
