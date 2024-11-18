@@ -42,7 +42,7 @@ model FashionWanita {
 
 model Admin {
   id            String @id @default(uuid())
-  username      String
+  username      String @unique
   name          String
   profile_image String
   password      String
