@@ -23,7 +23,7 @@ export const POST = async (req: Request) => {
     );
   }
 
-  const existingUsername = await prisma.admin.findFirst({
+  const existingUsername = await prisma.admin.findUnique({
     where: {
       username,
     },
