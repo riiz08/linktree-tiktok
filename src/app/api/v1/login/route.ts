@@ -3,29 +3,27 @@ import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { generateToken } from "@/lib/generateToken";
 
-export const GET = () => {
-  return NextResponse.json({ message: "hello world" });
-};
-
 export const POST = async (req: Request) => {
   const prisma = new PrismaClient();
   const { username, password } = await req.json();
 
-  if (username === "") {
+  if (!username) {
     return NextResponse.json(
       { message: "Username tidak boleh kosong" },
       { status: 400 }
     );
-  } else if (password === "") {
+  }
+
+  if (!password) {
     return NextResponse.json(
       { message: "Password tidak boleh kosong" },
       { status: 400 }
     );
   }
 
-  const existingUsername = await prisma.admin.findUnique({
+  const existingUsername = await prisma.admin.findFirst({
     where: {
-      username,
+      username, // Properti ini harus ada di schema.prisma
     },
   });
 
@@ -39,7 +37,7 @@ export const POST = async (req: Request) => {
   );
 
   if (!comparePassword) {
-    return NextResponse.json({ message: "Something wrong" }, { status: 401 });
+    return NextResponse.json({ message: "Password salah" }, { status: 401 });
   }
 
   const token = generateToken(username);
