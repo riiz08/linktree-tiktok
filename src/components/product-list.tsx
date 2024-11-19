@@ -1,3 +1,5 @@
+"use client";
+
 import CardProduct from "./card-product";
 
 interface ProductsType {
@@ -9,18 +11,16 @@ interface ProductsType {
 }
 
 interface ProductListProps {
-  fetchProducts: () => Promise<ProductsType[]>; // Fungsi fetching data
+  products: ProductsType[]; // Oper data langsung
 }
 
-const ProductList = async ({ fetchProducts }: ProductListProps) => {
-  const products = await fetchProducts();
-
+const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="px-8 py-4 flex justify-center flex-wrap items-center gap-4">
       {products != undefined ? (
         products.map((product: ProductsType) => (
           <CardProduct
-            key={product.name} // Tambahkan `key` untuk identifikasi unik
+            key={product.name}
             name={product.name}
             image={product.image}
             description={product.description}

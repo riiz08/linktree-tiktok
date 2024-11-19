@@ -28,10 +28,9 @@ export const GET = async (req: NextRequest) => {
         },
       });
     } else {
-      return NextResponse.json(
-        { message: "Data produk yang dikirim tidak lengkap atau invalid." },
-        { status: 400 }
-      );
+      return NextResponse.json({
+        message: "Data produk yang dikirim tidak lengkap atau invalid.",
+      });
     }
   }
 
@@ -46,10 +45,7 @@ export const GET = async (req: NextRequest) => {
   });
 
   if (products.length === 0)
-    return NextResponse.json(
-      { message: "Produk tidak ditemukan" },
-      { status: 404 }
-    );
+    return NextResponse.json({ message: "Produk tidak ditemukan" });
 
   const transformedProducts = products.map((product) => ({
     ...product,

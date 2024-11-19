@@ -25,10 +25,19 @@ export const getAllFashionPria = async () => {
 };
 
 export const getAllFashionWanita = async () => {
-  const fetching = await fetch(
-    `${process.env.API_BASE_URL}/api/v1/produk/fashion-wanita`
-  );
-  const response = await fetching.json();
+  try {
+    const fetching = await fetch(
+      `${process.env.API_BASE_URL}/api/v1/produk/fashion-wanita`
+    );
 
-  return response.data;
+    if (!fetching.ok) {
+      throw new Error(`HTTP error! Status: ${fetching.status}`);
+    }
+
+    const response = await fetching.json();
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching fashion wanita:", error);
+    return []; // Kembalikan array kosong jika terjadi error
+  }
 };

@@ -1,13 +1,16 @@
 import ProductList from "@/components/product-list";
 import { getAllFashionWanita } from "@/lib/getProducts";
 
-const Page = () => {
+const Page = async () => {
+  const products = await getAllFashionWanita(); // Ambil data di server
+  console.log(products);
+
   return (
     <main>
       <h1 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0 text-center pt-1">
-        Rekomendasi Parfum
+        Rekomendasi Fashion Wanita
       </h1>
-      <ProductList fetchProducts={getAllFashionWanita} />
+      <ProductList products={products} />
     </main>
   );
 };
