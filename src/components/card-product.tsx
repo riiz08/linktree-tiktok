@@ -13,7 +13,7 @@ interface PropsCardProduct {
 }
 
 const CardProduct = (props: PropsCardProduct) => {
-  const { name, description, image, amount, shopee, tiktok } = props;
+  const { name, description, image, amount, shopee } = props;
   return (
     <div className="relative group py-4 flex gap-2 w-96 h-52 border mt-4 rounded-lg p-4">
       <Image
