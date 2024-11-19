@@ -10,7 +10,6 @@ interface PropsCardProduct {
   image: string;
   amount: number;
   shopee: string;
-  tiktok: string;
 }
 
 const CardProduct = (props: PropsCardProduct) => {
@@ -49,18 +48,6 @@ const CardProduct = (props: PropsCardProduct) => {
               height={20}
               width={20}
               alt="Shopee afilliate"
-            />
-          </Link>
-        </Button>
-        <Button size={"lg"} asChild className="font-semibold uppercase">
-          <Link href={tiktok}>
-            Beli Sekarang Di
-            <Image
-              src={"/tiktokshop.png"}
-              height={20}
-              width={20}
-              alt="Tiktok afilliate"
-              className="mix-blend-multiply"
             />
           </Link>
         </Button>
