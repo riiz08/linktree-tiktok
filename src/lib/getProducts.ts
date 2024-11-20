@@ -1,3 +1,5 @@
+import { dummyProducts } from "./dummyData";
+
 interface ProductData {
   name: string;
   image: string;
@@ -7,35 +9,65 @@ interface ProductData {
 }
 
 export const getAllParfum = async () => {
-  const fetching = await fetch(
-    `${process.env.API_BASE_URL}/api/v1/produk/parfum`
-  );
-  const response = await fetching.json();
+  try {
+    if (process.env.NODE_ENV === "production") {
+      const fetching = await fetch(
+        `${process.env.API_BASE_URL}/api/v1/produk/parfum`
+      );
 
-  return response.data;
+      if (!fetching.ok) {
+        throw new Error(`HTTP error! Status: ${fetching.status}`);
+      }
+
+      const response = await fetching.json();
+      return response.data;
+    } else {
+      return dummyProducts;
+    }
+  } catch (error) {
+    console.error("Error fetching fashion wanita:", error);
+    return []; // Kembalikan array kosong jika terjadi error
+  }
 };
 
 export const getAllFashionPria = async () => {
-  const fetching = await fetch(
-    `${process.env.API_BASE_URL}/api/v1/produk/fashion-pria`
-  );
-  const response = await fetching.json();
+  try {
+    if (process.env.NODE_ENV === "production") {
+      const fetching = await fetch(
+        `${process.env.API_BASE_URL}/api/v1/produk/fashion-pria`
+      );
 
-  return response.data;
+      if (!fetching.ok) {
+        throw new Error(`HTTP error! Status: ${fetching.status}`);
+      }
+
+      const response = await fetching.json();
+      return response.data;
+    } else {
+      return dummyProducts;
+    }
+  } catch (error) {
+    console.error("Error fetching fashion wanita:", error);
+    return []; // Kembalikan array kosong jika terjadi error
+  }
 };
 
 export const getAllFashionWanita = async () => {
   try {
-    const fetching = await fetch(
-      `${process.env.API_BASE_URL}/api/v1/produk/fashion-wanita`
-    );
+    if (process.env.NODE_ENV === "production") {
+      const fetching = await fetch(
+        `${process.env.API_BASE_URL}/api/v1/produk/fashion-wanita`
+      );
 
-    if (!fetching.ok) {
-      throw new Error(`HTTP error! Status: ${fetching.status}`);
+      if (!fetching.ok) {
+        throw new Error(`HTTP error! Status: ${fetching.status}`);
+      }
+
+      const response = await fetching.json();
+      return response.data;
+    } else {
+      return dummyProducts;
     }
-
-    const response = await fetching.json();
-    return response.data;
   } catch (error) {
     console.error("Error fetching fashion wanita:", error);
     return []; // Kembalikan array kosong jika terjadi error
