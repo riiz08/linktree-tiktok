@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
-import { Dancing_Script, Sour_Gummy } from "next/font/google";
+import { Dancing_Script } from "next/font/google";
 
 export const metadata: Metadata = {
   title: `Showcase Riiz O'Brien`,

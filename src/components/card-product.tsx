@@ -3,6 +3,7 @@ import { Badge } from "./ui/badge";
 import { formatToIDR } from "@/lib/formatToIDR";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Montserrat } from "next/font/google";
 
 interface PropsCardProduct {
   name: string;
@@ -11,6 +12,11 @@ interface PropsCardProduct {
   amount: number;
   shopee: string;
 }
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "auto",
+});
 
 const CardProduct = (props: PropsCardProduct) => {
   const { name, description, image, amount, shopee } = props;
@@ -33,7 +39,9 @@ const CardProduct = (props: PropsCardProduct) => {
         <h1 className="scroll-m-20 text-md md:text-lg font-semibold tracking-tight">
           {name}
         </h1>
-        <p className="leading-4 md:leading-6 [&:not(:first-child)]:mt-1 text-xs md:text-sm">
+        <p
+          className={`leading-4 md:leading-6 [&:not(:first-child)]:mt-1 text-xs md:text-sm ${montserrat.className}`}
+        >
           {description}
         </p>
       </div>
