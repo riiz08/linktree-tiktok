@@ -29,7 +29,7 @@ const CardProduct = (props: PropsCardProduct) => {
       >
         {formatToIDR(amount)}
       </Badge>
-      <div className="group-hover:blur-sm transition-all duration-300">
+      <div className="group-hover:blur-sm overflow-hidden transition-all duration-300">
         <h1 className="scroll-m-20 text-md md:text-lg font-semibold tracking-tight">
           {name}
         </h1>

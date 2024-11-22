@@ -1,11 +1,3 @@
-interface ProductData {
-  name: string;
-  image: string;
-  description: string;
-  shopee: string;
-  price: string;
-}
-
 export const getAllParfum = async () => {
   try {
     const fetching = await fetch(

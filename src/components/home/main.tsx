@@ -12,7 +12,7 @@ const Main = () => {
           <AvatarImage src="/profile.jpg" alt="Riiz O'Brien" />
           <AvatarFallback>RO</AvatarFallback>
         </Avatar>
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center">
+        <h1 className="scroll-m-20 text-4xl font-black tracking-tight lg:text-5xl text-center">
           Showcase Riiz O&apos;Brien
         </h1>
       </div>
